@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B6C9D5"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/headText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#084169"
+        android:fontFamily="@font/skranji_bold"
+        android:foregroundTint="#03A9F4"
+        android:gravity="center"
+        android:text="Meal Ordering"
+        android:textColor="#FFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Choose your Meal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headText"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="257dp"
+        android:layout_height="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:entries="@array/meals"
+        tools:layout_editor_absoluteY="143dp"
+        app:layout_constraintTop_toBottomOf="@+id/textMeal"
+        />
+
+    <ImageView
+        android:id="@+id/mealImage"
+        android:layout_width="238dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:srcCompat="@drawable/meal0"
+        />
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="104dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Meal Price"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.879"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mealImage" />
+
+    <TextView
+        android:id="@+id/mealPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/duru_sans"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/priceText" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/quantityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Please select quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/priceText"
+        app:layout_constraintTop_toBottomOf="@+id/priceText" />
+
+    <SeekBar
+        android:id="@+id/quantitySeekBar"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="267dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:max="10"
+        android:progress="0"
+        android:progressTint="#152830"
+        android:thumbTint="#2E292E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/quantityText"
+        app:layout_constraintTop_toBottomOf="@+id/quantityText" />
+
+    <TextView
+        android:id="@+id/tipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Please select tip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/quantitySeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/quantitySeekBar" />
+
+    <RadioGroup
+        android:id="@+id/tipRadioGroup"
+        android:layout_width="190dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tipText"
+        app:layout_constraintTop_toBottomOf="@+id/tipText">
+
+        <RadioButton
+            android:id="@+id/tip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="10%"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tipText"
+            app:layout_constraintTop_toBottomOf="@+id/tipText" />
+
+        <RadioButton
+            android:id="@+id/tip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/tip1"
+            app:layout_constraintTop_toTopOf="@+id/tip1" />
+
+        <RadioButton
+            android:id="@+id/tip3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.34"
+            app:layout_constraintStart_toEndOf="@+id/tip2"
+            app:layout_constraintTop_toTopOf="@+id/tip2" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/totalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Total Price"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tipRadioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/tipRadioGroup" />
+
+    <EditText
+        android:id="@+id/totalPrice"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:editable="false"
+        android:ems="10"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/totalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalText"
+        app:layout_constraintTop_toTopOf="@+id/totalText"
+        tools:text="0.0" />
+
+    <TextView
+        android:id="@+id/mealAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Meal Price"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/totalText"
+        app:layout_constraintTop_toBottomOf="@+id/totalText" />
+
+    <EditText
+        android:id="@+id/editMealAmount"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:editable="false"
+        android:ems="10"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/mealAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/totalPrice"
+        app:layout_constraintTop_toTopOf="@+id/mealAmount"
+        tools:text="0.0" />
+
+    <TextView
+        android:id="@+id/taxAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Tax"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/mealAmount"
+        app:layout_constraintTop_toBottomOf="@+id/mealAmount" />
+
+    <EditText
+        android:id="@+id/editTaxAmount"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:editable="false"
+        android:ems="10"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/taxAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editMealAmount"
+        app:layout_constraintTop_toTopOf="@+id/taxAmount"
+        tools:text="0.0" />
+
+    <TextView
+        android:id="@+id/tipAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/vampiro_one"
+        android:text="Tip"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/taxAmount"
+        app:layout_constraintTop_toBottomOf="@+id/taxAmount" />
+
+    <EditText
+        android:id="@+id/editTipAmount"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:editable="false"
+        android:ems="10"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tipAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTaxAmount"
+        app:layout_constraintTop_toTopOf="@+id/tipAmount"
+        tools:text="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Order"
+        android:onClick="confirmOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tipAmount" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

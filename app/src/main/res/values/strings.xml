@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MealOrdering</string>
+    <string-array name="meals">
+        <item>please choose</item>
+        <item>Sweet Potato Enchiladas</item>
+        <item>Roasted Cauliflower Lasagna</item>
+        <item>Vegetarian Cacciatore</item>
+        <item>Vegetable Curry Bowl</item>
+        <item>Mushroom Veggie Burger</item>
+        <item>Cooker Saag Paneer</item>
+        <item>Vegetarian Pad Thai</item>
+        <item>Grilled Ratatouille</item>
+        <item>Bean Casserole</item>
+        <item>Rajas Salsa Taco</item>
+    </string-array>
+</resources>
