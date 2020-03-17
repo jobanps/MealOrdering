@@ -2,9 +2,11 @@ package com.csat.mealordering;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mealAmount;
     EditText taxAmount;
     EditText tipAmount;
+    CheckBox checkBox;
     double tipPercentage = 0;
     int quantity = 0;
     double pricePerMeal = 0;
@@ -112,11 +115,10 @@ public class MainActivity extends AppCompatActivity {
 
         //RadioGroup
         tipRG = findViewById(R.id.tipRadioGroup);
-        tipPercentage = 0.10;
+        tipPercentage = 0.10; // default value
         tipRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
 
                 int radioBtnId = tipRG.getCheckedRadioButtonId();
                 int selectedIndex = tipRG.indexOfChild(findViewById(radioBtnId));
@@ -135,11 +137,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        checkBox = findViewById(R.id.confirmCheck);
+
            }
 
     public void confirmOrder(View view) {
 
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
 
+        if(mealSpin.getSelectedItemId() != 0) {
+
+            if(quantitySeekBar.getProgress() > 0) {
+
+            } else {
+                Toast.makeText(context,"Please select 1 or more quantity", duration).show();
+            }
+
+
+        } else {
+
+            Toast.makeText(context,"Please choose meal", duration).show();
+
+        }
 
     }
 

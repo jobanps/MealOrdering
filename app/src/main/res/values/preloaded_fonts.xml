@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/advent_pro_bold</item>
         <item>@font/duru_sans</item>
+        <item>@font/skranji</item>
         <item>@font/skranji_bold</item>
         <item>@font/vampiro_one</item>
     </array>
