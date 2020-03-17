@@ -3,7 +3,10 @@ package com.csat.mealordering;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -14,6 +17,9 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
     double pricePerMeal = 0;
     double total,mealAmt,tax,tip;
+
+    private ArrayList<String> orderidArr = new ArrayList<>();
+    private ArrayList<String> mealNameArr = new ArrayList<>();
+    private ArrayList<String>  mealPriceArr = new ArrayList<>();
+    private ArrayList<String> quantityArr = new ArrayList<>();
+    private ArrayList<String> totalPriceArr = new ArrayList<>();
+    int orderId = 101;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         mealAmount = findViewById(R.id.editMealAmount);
         taxAmount = findViewById(R.id.editTaxAmount);
         tipAmount = findViewById(R.id.editTipAmount);
-
-
 
         //For image
         mealImage = findViewById(R.id.mealImage);
@@ -150,6 +161,24 @@ public class MainActivity extends AppCompatActivity {
 
             if(quantitySeekBar.getProgress() > 0) {
 
+                if(checkBox.isChecked()) {
+
+                    updateOrderData();
+
+                    SharedPreferences sharedPreferences = this.getSharedPreferences("com.csat.mealOrdering", Context.MODE_PRIVATE);
+                    sharedPreferences.edit().putStringSet("orderidArr", new HashSet<String>(orderidArr));
+                    sharedPreferences.edit().putStringSet("mealNameArr", new HashSet<String>(mealNameArr));
+                    sharedPreferences.edit().putStringSet("mealPriceArr", new HashSet<String>(mealPriceArr));
+                    sharedPreferences.edit().putStringSet("quantityArr", new HashSet<String>(quantityArr));
+                    sharedPreferences.edit().putStringSet("totalPriceArr", new HashSet<String>(totalPriceArr));
+
+                    Intent nextActivity = new Intent(this,OrderDetails.class);
+                    startActivity(nextActivity);
+
+                } else {
+                    Toast.makeText(context,"Please confirm order", duration).show();
+                }
+
             } else {
                 Toast.makeText(context,"Please select 1 or more quantity", duration).show();
             }
@@ -163,6 +192,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void updateOrderData() {
+
+        orderidArr.add(String.valueOf(orderId));
+        orderId++;
+        mealNameArr.add(mealSpin.getSelectedItem().toString());
+        mealPriceArr.add(String.valueOf(pricePerMeal));
+        quantityArr.add(String.valueOf(quantity));
+        totalPriceArr.add(String.valueOf(total));
+    }
     public void updatePrice(){
 
         totalAmount.setText("$" + String.format("%.2f", total));
