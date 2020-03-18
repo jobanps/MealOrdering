@@ -2,14 +2,14 @@ package com.csat.mealordering;
 
 public class Meal {
 
-    private int orderid;
-    private String mealName;
-    private double mealPrice;
-    private int quantity;
-    private double totalPrice;
+    int imageid;
+    String mealName;
+    double mealPrice;
+    int quantity;
+    double totalPrice;
 
-    public Meal(int orderid, String mealName, double mealPrice, int quantity, double totalPrice) {
-        this.orderid = orderid;
+    public Meal(int imageid, String mealName, double mealPrice, int quantity, double totalPrice) {
+        this.imageid = imageid;
         this.mealName = mealName;
         this.mealPrice = mealPrice;
         this.quantity = quantity;
@@ -17,11 +17,11 @@ public class Meal {
     }
 
     public int getOrderid() {
-        return orderid;
+        return imageid;
     }
 
     public void setOrderid(int orderid) {
-        this.orderid = orderid;
+        this.imageid = orderid;
     }
 
     public String getMealName() {

@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
     double pricePerMeal = 0;
     double total,mealAmt,tax,tip;
 
-    private ArrayList<String> orderidArr = new ArrayList<>();
+    private ArrayList<String> imageidArr = new ArrayList<>();
     private ArrayList<String> mealNameArr = new ArrayList<>();
     private ArrayList<String>  mealPriceArr = new ArrayList<>();
     private ArrayList<String> quantityArr = new ArrayList<>();
     private ArrayList<String> totalPriceArr = new ArrayList<>();
-    int orderId = 101;
+    int imageId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
                 int index = arg0.getSelectedItemPosition();
-                mealImage.setImageResource(mealSrcArray[index]);
+                imageId = mealSrcArray[index];
+                mealImage.setImageResource(imageId);
                 pricePerMeal = mealPrice[index];
                 mealPriceText.setText("$" + pricePerMeal);
                 calculatePrice();
@@ -165,12 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
                     updateOrderData();
 
-                    SharedPreferences sharedPreferences = this.getSharedPreferences("com.csat.mealOrdering", Context.MODE_PRIVATE);
-                    sharedPreferences.edit().putStringSet("orderidArr", new HashSet<String>(orderidArr));
-                    sharedPreferences.edit().putStringSet("mealNameArr", new HashSet<String>(mealNameArr));
-                    sharedPreferences.edit().putStringSet("mealPriceArr", new HashSet<String>(mealPriceArr));
-                    sharedPreferences.edit().putStringSet("quantityArr", new HashSet<String>(quantityArr));
-                    sharedPreferences.edit().putStringSet("totalPriceArr", new HashSet<String>(totalPriceArr));
+                    updateSharedPreferences();
 
                     Intent nextActivity = new Intent(this,OrderDetails.class);
                     startActivity(nextActivity);
@@ -194,13 +190,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateOrderData() {
 
-        orderidArr.add(String.valueOf(orderId));
-        orderId++;
+        imageidArr.add(String.valueOf(imageId));
         mealNameArr.add(mealSpin.getSelectedItem().toString());
         mealPriceArr.add(String.valueOf(pricePerMeal));
         quantityArr.add(String.valueOf(quantity));
         totalPriceArr.add(String.valueOf(total));
     }
+    public void updateSharedPreferences() {
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.csat.mealOrdering", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putStringSet("imageidArr", new HashSet<String>(imageidArr)).apply();
+        sharedPreferences.edit().putStringSet("mealNameArr", new HashSet<String>(mealNameArr)).apply();
+        sharedPreferences.edit().putStringSet("mealPriceArr", new HashSet<String>(mealPriceArr)).apply();
+        sharedPreferences.edit().putStringSet("quantityArr", new HashSet<String>(quantityArr)).apply();
+        sharedPreferences.edit().putStringSet("totalPriceArr", new HashSet<String>(totalPriceArr)).apply();
+    }
+
     public void updatePrice(){
 
         totalAmount.setText("$" + String.format("%.2f", total));

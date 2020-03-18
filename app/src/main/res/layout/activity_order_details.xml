@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".OrderDetails">
 
+    <TextView
+        android:id="@+id/headText"
+        android:layout_width="408dp"
+        android:layout_height="55dp"
+        android:background="#084169"
+        android:fontFamily="@font/skranji_bold"
+        android:foregroundTint="#03A9F4"
+        android:gravity="center"
+        android:text="Meal Ordering"
+        android:textColor="#FFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/searchText"
+        android:layout_width="339dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="search order here"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+        app:layout_constraintTop_toBottomOf="@+id/headText" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="51dp"
+        android:layout_height="49dp"
+        android:background="@drawable/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchText"
+        app:layout_constraintTop_toTopOf="@+id/searchText" />
+
+    <TextView
+        android:id="@+id/textMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/skranji_bold"
+        android:text="All Orders"
+        android:textColor="#191C2E"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchText"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <ListView
+        android:id="@+id/orderList"
+        android:layout_width="409dp"
+        android:layout_height="569dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMeal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
