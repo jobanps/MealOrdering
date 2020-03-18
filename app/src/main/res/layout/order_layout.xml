@@ -9,21 +9,25 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="96dp"
-        android:layout_height="99dp"
+        android:layout_width="91dp"
+        android:layout_height="84dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="319dp"
-        android:layout_height="36dp"
+        android:layout_width="318dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/duru_sans"
         android:padding="2dp"
-        android:text="Name"
+        android:text="Meal Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#085"
+        android:textColor="#212E75"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -31,9 +35,12 @@
         android:id="@+id/perMeal"
         android:layout_width="141dp"
         android:layout_height="29dp"
+        android:fontFamily="@font/duru_sans"
         android:padding="2dp"
-        android:text="permeal"
+        android:text="Meal Price"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#212E75"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -41,24 +48,30 @@
         android:id="@+id/quantity"
         android:layout_width="176dp"
         android:layout_height="29dp"
+        android:fontFamily="@font/duru_sans"
         android:padding="2dp"
-        android:text="ID"
+        android:text="Quantity"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#212E75"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/id"
+        app:layout_constraintStart_toEndOf="@+id/perMeal"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/total"
-        android:layout_width="319dp"
-        android:layout_height="36dp"
+        android:layout_width="316dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/duru_sans"
         android:padding="2dp"
-        android:text="Name"
+        android:text="Total Amount"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#085"
+        android:textColor="#212E75"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/perMeal"
         app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,12 +28,11 @@ public class OrderDetails extends AppCompatActivity {
         String[] quantityArr = sharedPreferences.getStringSet("quantityArr", new HashSet<String>()).toArray(new String[0]);
         String[] totalPriceArr = sharedPreferences.getStringSet("totalPriceArr", new HashSet<String>()).toArray(new String[0]);
 
-
         ListView listView = findViewById(R.id.orderList);
 
         List<Meal> orderList = new ArrayList<>();
 
-        for (int i = 0; i < imageidArr.length ; i++) {
+        for (int i = 0; i < mealNameArr.length ; i++) {
             Meal meal = new Meal(Integer.valueOf(imageidArr[i]), mealNameArr[i],Double.valueOf(mealPriceArr[i]),Integer.valueOf(quantityArr[i]),Double.valueOf(totalPriceArr[i]));
             orderList.add(meal);
         }

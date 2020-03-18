@@ -47,9 +47,9 @@ public class OrderAdapter extends ArrayAdapter {
         System.out.println(orders.get(position).mealName);
         imageMeal.setImageResource(orders.get(position).imageid);
         nameText.setText(orders.get(position).mealName);
-        perMeal.setText(String.valueOf(orders.get(position).mealPrice));
-        quanText.setText(String.valueOf(orders.get(position).quantity));
-        totalText.setText(String.valueOf(orders.get(position).totalPrice));
+        perMeal.setText("Meal Price : " + orders.get(position).mealPrice);
+        quanText.setText("Quantity : " + orders.get(position).quantity);
+        totalText.setText("Total Amount : " + orders.get(position).totalPrice);
 
         return v;
     }

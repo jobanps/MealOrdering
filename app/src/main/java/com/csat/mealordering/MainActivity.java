@@ -1,12 +1,9 @@
 package com.csat.mealordering;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -17,6 +14,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -162,19 +161,23 @@ public class MainActivity extends AppCompatActivity {
 
             if(quantitySeekBar.getProgress() > 0) {
 
-                if(checkBox.isChecked()) {
+                if(tip != 0) {
 
-                    updateOrderData();
+                    if (checkBox.isChecked()) {
 
-                    updateSharedPreferences();
+                        updateOrderData();
 
-                    Intent nextActivity = new Intent(this,OrderDetails.class);
-                    startActivity(nextActivity);
+                        updateSharedPreferences();
 
+                        Intent nextActivity = new Intent(this, OrderDetails.class);
+                        startActivity(nextActivity);
+
+                    } else {
+                        Toast.makeText(context, "Please confirm order", duration).show();
+                    }
                 } else {
-                    Toast.makeText(context,"Please confirm order", duration).show();
+                    Toast.makeText(context,"Please select tip percentage", duration).show();
                 }
-
             } else {
                 Toast.makeText(context,"Please select 1 or more quantity", duration).show();
             }
@@ -185,6 +188,34 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(context,"Please choose meal", duration).show();
 
         }
+
+    }
+
+    @Override
+    protected void onRestart() {
+        initFields();
+        super.onRestart();
+
+    }
+
+    public void initFields(){
+
+        totalAmount.setText("0.0");
+        taxAmount.setText("0.0");
+        tipAmount.setText("0.0");
+        mealAmount.setText("0.0");
+        quantitySeekBar.setProgress(0);
+        checkBox.setChecked(false);
+        mealSpin.setSelection(0);
+        tipRG.clearCheck();
+        tipPercentage = 0;
+        quantity = 0;
+        pricePerMeal = 0;
+        total = 0;
+        mealAmt = 0;
+        tax = 0;
+        tip=0;
+
 
     }
 
